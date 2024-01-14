@@ -2,7 +2,7 @@ def main():
     book_path = "books/frankenstein.txt"
     text = get_book_text(book_path)
     words = get_word_count(text)
-    print(words)
+    print(f"{words} words found in the document")
     print (get_letter_count(text))
 
 
@@ -18,10 +18,11 @@ def get_letter_count(text):
     letter_counts = {}
     for letter in text:
         lowered = letter.lower()
-        if lowered in letter_counts:
-            letter_counts[lowered] += 1
-        else:
-            letter_counts[lowered] = 1
+        if lowered.isalpha():
+            if lowered in letter_counts:
+                letter_counts[lowered] += 1
+            else:
+                letter_counts[lowered] = 1
     return letter_counts
 
 
